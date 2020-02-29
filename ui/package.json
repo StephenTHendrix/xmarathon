@@ -34,7 +34,7 @@
     "react": "^16.10.2",
     "react-autosuggest": "^9.4.2",
     "react-dom": "^16.5.0",
-    "react-ionicons": "^2.1.6",
+    "react-ionicons": "^3.1.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "1.1.5",
     "request-promise": "^4.2.2",

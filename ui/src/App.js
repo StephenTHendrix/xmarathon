@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import SearchBar from './components/SearchBar';
+// import SearchBar from './components/SearchBar';
 import SortTable from './components/Tables/SortTable';
 import LoadingIcon from './components/LoadingIcon';
 import { createBrowserHistory } from 'history';
@@ -101,13 +101,14 @@ class App extends Component {
     return this.state.loading ? (
       <LoadingIcon />
     ) : (
-      <SearchBar
-        runners={this.state.data}
-        selectedRunnerChange={this.handleSelectedRunnerChange}
-        updateFilterView={this.handleFilterChange}
-        filteredView={this.state.filteredView}
-        eventType={this.state.eventType}
-      />
+      <div>Searchbar removed</div>
+      // <SearchBar
+      //   runners={this.state.data}
+      //   selectedRunnerChange={this.handleSelectedRunnerChange}
+      //   updateFilterView={this.handleFilterChange}
+      //   filteredView={this.state.filteredView}
+      //   eventType={this.state.eventType}
+      // />
     );
   };
 
