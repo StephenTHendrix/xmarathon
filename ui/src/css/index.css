@@ -1,0 +1,959 @@
+/*********************
+  set default styles
+**********************/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'SJ Sans', sans-serif;
+}
+
+.app-container {
+    max-width: 2000px;
+    width: 95%;
+    margin: auto;
+    position: relative;
+}
+
+@media(max-width: 720px) {
+    .app-container {
+        max-width: 100%;
+        width: 100%;
+        /* height: 100vh; */
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+/************************
+Loading SVG Icon
+*************************/
+
+.background {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+}
+
+.loading-container {
+    position: relative;
+}
+
+.loading {
+    position: absolute;
+    left: 50%;
+    margin-left: -77.5px;
+    margin-top: 20%;
+}
+
+.loading-icon {
+    width: 100px;
+}
+
+.loading .loader svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.loading .loader h3 {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.loader svg {
+    -webkit-animation: circle infinite .75s linear;
+    -moz-animation: circle infinite .75s linear;
+    -o-animation: circle infinite .75s linear;
+    animation: circle infinite .75s linear;
+}
+
+
+
+
+/***********************************
+ SVG canvas for D3.js visualization
+*************************************/
+.canvas {
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.canvas-container {
+    position: relative;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.canvas-header {
+    width: 100%;
+}
+
+.canvas svg {
+    margin-top: -330px;
+    overflow-y: hidden;
+}
+
+.canvas.half-marathon svg {
+    margin-top: 0;
+    margin-left: 50px;
+    overflow: visible;
+}
+
+.canvas-header h1 {
+    font-size: 1em;
+    display: inline-block;
+}
+
+.canvas-header h1.mob-name {
+    display: none;
+}
+
+.canvas-meta {
+    width: 30%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+}
+
+.visualization-container {
+    max-height: inherit;
+    width: 100%;
+    -webkit-transition: max-height 1s; 
+    -moz-transition: max-height 1s; 
+    -ms-transition: max-height 1s; 
+    -o-transition: max-height 1s; 
+    transition: max-height 1s; 
+    overflow: hidden;
+}
+
+.visualization-container .false {
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 1s; 
+  -moz-transition: max-height 1s; 
+  -ms-transition: max-height 1s; 
+  -o-transition: max-height 1s; 
+  transition: max-height 1s;  
+}
+
+.visualization-container .false .legend {
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 1s; 
+  -moz-transition: max-height 1s; 
+  -ms-transition: max-height 1s; 
+  -o-transition: max-height 1s; 
+  transition: max-height 1s;
+}
+
+a.toggle-container {
+    border-bottom: 1px solid;
+    cursor: pointer;
+    float: right;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 1000px) {
+    .canvas {
+        display: none;
+    }
+
+    .data-chapter {
+        display: none;
+    }
+}
+
+@media(max-width: 860px) {
+    .canvas-header h1.site-name {
+        display: none;
+        float: left;
+        width: 70%;
+        margin-left: 1em;
+        margin-top: 0.2em;
+        font-size: 0.8em;
+    }
+
+    .canvas-header h1.mob-name {
+        display: inline-block;
+        font-size: 1em;
+        vertical-align: middle;
+        margin-top: 1em;
+    }
+}
+
+@media (max-width: 720px) {
+    .canvas-header {
+        height: 10%;
+    }
+}
+
+@media screen and (max-width: 720px), screen and (max-height: 400px) {
+    .canvas-header {
+        height: 15%;
+    }
+}
+
+@media (max-width: 330px) {
+    .canvas-header h1.mob-name {
+        font-size: .7em;
+        margin-top: 2em;
+    }
+}
+
+
+
+/*************************
+D3.js elements styling
+*************************/
+strong.male-gender {
+    color: rgb(102, 169, 186);
+}
+
+strong.female-gender {
+    color: rgb(247, 148, 29);
+}
+
+#intro {
+    margin: 0 auto 25px;
+    line-height: 24px;
+    font-size: 14px;
+}
+
+#intro .date {
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+#byline {
+    font-size: 12px;
+    margin: 0 auto 30px;
+}
+
+#byline span {
+    font-weight: bold;
+}
+
+#tooltip {
+    width: 260px;
+    height: 40px;
+    display: none;
+    position: fixed;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    text-align: center;
+    font-size: 12px;
+    padding: 6px 8px;
+    overflow: hidden;
+}
+
+#tooltip-inside {
+    line-height: 1em;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#tooltip .time {
+    font-weight: bold;
+}
+
+g.runner {
+    cursor: pointer;
+}
+
+#container-scale text {
+    fill: #666;
+}
+
+#container-scale line {
+    stroke: #666;
+}
+
+#container-notes line, #container-notes path {
+    stroke: #666;
+    stroke-width: 1px;
+}
+
+#container-notes text {
+    fill: #666;
+}
+
+.legend {
+    position: absolute;
+    top: 5em;
+    left: 0;
+}
+
+.legend h3 {
+    margin: 0;
+}
+
+.legend p {
+    margin: 0;
+}
+
+.legend-item span.legend-text {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+.legend-item span.legend-color {
+    -webkit-border-radius: 1.2em;
+    -moz-border-radius: 1.2em;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    margin: 0 4px -2px 0;
+    white-space: nowrap;
+}
+
+
+
+/*************************************
+  application header & event filters
+**************************************/
+.primary-header {
+    margin: 1em auto;
+}
+
+section .section-header {
+    width: 530px;
+}
+
+.secondary-header {
+    width: 30%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logo {
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.event-filters {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.event-filters .event-year {
+    display: inline-block;
+}
+
+.event-filters .event-type {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.event-filters p {
+    display: inline-block;
+    font-size: 13px;
+}
+
+.event-filters .dropdown-filter {
+    display: inline-block;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.event-year .dropdown-filter {
+    width: 100px;
+    margin: 10px;
+}
+
+.event-type .dropdown-filter {
+    width: 150px;
+    margin: 10px;
+}
+
+.help-link {
+    float: right;
+}
+
+@media (max-width: 1000px) {
+    .primary-header {
+        display: block;
+        width: 100%;
+    }
+
+    .help-link {
+        float: none;
+        text-align: center;
+    }
+}
+
+@media(max-width: 860px) {
+    .event-filters {
+        float: right;
+    }
+}
+
+@media (max-width: 720px) {
+    .primary-header {
+        width: 97%;
+        margin: 0 0.5em;
+    }
+
+    .event-filters {
+        margin: 0;
+        margin-left: 1.5em;
+        display: inline;
+        vertical-align: super;
+    }
+
+    .event-filters p {
+        display: none;
+    }
+
+    .event-filters .event-type {
+        margin: 0;
+    }
+
+    .event-type .dropdown-filter {
+        margin-bottom: 0;
+    }
+}
+
+@media(max-width: 360px) {
+    .event-filters {
+        margin-left: 0.5px;
+    }
+    .logo {
+        margin-right: 0;
+    }
+}
+
+/**********************
+Footer
+**********************/
+
+.contact-information {
+    font-family: 'SJ Sans', sans-serif;
+    font-size: .75em;
+    bottom: 0;
+    padding-top: 15px;
+    color: gray;
+    width: 100%;
+    text-align: center;
+ }
+ 
+ a:hover {
+    color: #c10f3a;
+  }
+
+/**********************
+Athlete Card styling
+***********************/
+.athlete-card {
+    width: 30%;
+    float: right;
+}
+
+.athlete-card .card-header {
+    background: #1874DC;
+}
+
+.athlete-card .card-body {
+    background: #081E5E;
+}
+
+
+
+/************************************
+Search Bar, search box, and filters
+*************************************/
+.search-bar {
+    width: 100%;
+    background: #105BB0;
+    height: 50px;
+    display: flex;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+}
+
+.search-bar .search-box {
+    background: #528BCB;
+    border: 0;
+    border-radius: 3px;
+    width: 25%;
+    height: 30px;
+    margin-top: .6em;
+    margin-left: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.search-bar .react-autosuggest__container {
+    width: 90%;
+    margin-left: 25px;
+    overflow: hidden;
+}
+
+.search-bar .react-autosuggest__input {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 13px;
+    width: 100%;
+    height: 25px;
+    padding-left: 30px;
+}
+
+.search-bar .react-autosuggest__input::-webkit-input-placeholder {
+    color: #fff;
+}
+
+.search-bar .filters {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.search-bar .filters p {
+    display: inline-block;
+    color: #fff;
+    margin: 15px 10px;
+}
+
+.search-bar .filters a {
+    display: inline-block;
+    color: #81C7FF;
+    margin-right: 25px;
+}
+
+.search-bar .search-button {
+    cursor: pointer;
+    margin-right: -50px;
+}
+
+.search-bar .close-circle {
+    cursor: pointer;
+}
+
+.search-bar .react-autosuggest__suggestions-container--open {
+    width: 100%;
+    background: hsla(0, 0%, 20%, 0.53);
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 50px;
+    z-index: 9999;
+}
+
+.search-bar .react-autosuggest__suggestions-container--open ul {
+    width: 40%;
+    background: #fff;
+    margin: 5px 25px;
+    list-style: none;
+    padding: 0;
+    max-height: 75%;
+    overflow-y: scroll;
+}
+
+.search-bar .react-autosuggest__suggestions-container--open ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.search-bar .react-autosuggest__suggestions-container--open ul::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+.search-bar .react-autosuggest__suggestions-container--open ul::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+.search-bar .react-autosuggest__suggestions-container--open ul::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white; /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
+}
+
+@media(max-width: 1290px) {
+    .search-bar .search-box {
+        width: 40%;
+    }
+}
+
+@media (max-width: 720px) {
+    .search-bar .react-autosuggest__suggestions-container--open ul {
+        width: 100%;
+        background: #fff;
+        margin: 5px 25px;
+        list-style: none;
+        padding: 0;
+        max-height: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    .search-bar {
+        flex-wrap: wrap;
+        height: 10%;
+    }
+    .search-bar .search-box {
+        width: 98%;
+        margin: auto;
+        margin-top: .2em;
+    }
+
+    .search-bar .react-autosuggest__suggestions-container--open ul {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 720px), screen and (max-height: 400px) {
+    .search-bar {
+        height: 13%;
+    }
+}
+
+@media(max-width: 330px) {
+    .search-bar .search-box {
+        margin-right: 0;
+        margin-left: 5px;
+    }
+}
+
+.search-bar .react-autosuggest__suggestions-container--open li {
+    border-top: 1px solid hsl(0, 0%, 80%);
+    margin-left: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-bar .clear-search {
+    background: none;
+    color: #fff;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    padding: 0;
+    margin: 10px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.suggested-result h3 {
+    margin-bottom: 0;
+}
+
+.filters .filter-btn {
+    background: none;
+    color: rgba(255, 255, 255, 0.54);
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    padding-bottom: 3px;
+    margin: 0 10px;
+}
+
+.filters .filter-btn:hover {
+    color: #fff;
+}
+
+.filters .active-btn {
+    color: #fff;
+    border-bottom: 1.5px solid #fff;
+    font-weight: bold;
+    outline:none; 
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {  
+    .search-bar .filters p {
+        margin: 15px 2px;
+        margin-left: -20px;
+        font-size: 2.5vw;
+    }
+
+    .filters .filter-btn{
+        margin: 0 3.95px;
+        font-size: 2.5vw;
+    }    
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {  
+    .search-bar .filters p {
+        margin: 15px 2px;
+        margin-left: -20px;
+        font-size: 3.7vw;
+    }
+
+    .filters .filter-btn{
+        margin: 0 3.95px;
+        font-size: 3.7vw;
+    }    
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {  
+    .search-bar .filters p {
+        margin: 17px 2px;
+        margin-left: -20px;
+        font-size: 1.8vw;
+    }
+
+    .filters .filter-btn{
+        margin: 0 3.95px;
+        font-size: 1.8vw;
+    }    
+  }
+  
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {    
+    .search-bar .filters p {
+        margin: 15px 2px;
+        margin-left: -20px;
+        font-size: 1.5vw;
+    }
+
+    .filters .filter-btn{
+        margin: 0 3.95px;
+        font-size: 1.5vw;
+    }    
+  }
+
+  @media screen and (min-device-width : 414px) and (-webkit-device-pixel-ratio: 3) {
+        .search-bar .filters p {
+            margin: 15px 2px;
+            margin-left: -20px;
+            font-size: 3.7vw;
+        }
+    
+        .filters .filter-btn{
+            margin: 0 3.95px;
+            font-size: 3.7vw;
+        } 
+    } 
+
+    @media screen and (min-device-width : 736px) and (-webkit-device-pixel-ratio: 3) {
+        .search-bar .filters p {
+            margin: 15px 2px;
+            margin-left: -20px;
+            font-size: 2vw;
+        }
+    
+        .filters .filter-btn{
+            margin: 0 3.95px;
+            font-size: 2vw;
+        } 
+    } 
+
+/********************
+React Table Styling
+*********************/
+.app-container .results-container {
+    position: relative;
+}
+
+.results-table {
+    width: 100%;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+}
+
+.ReactTable {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 13px;
+    height: 83vh;
+    max-height: 85vh;
+}
+
+.filtered-table .ReactTable {
+    height: inherit;
+}
+
+.ReactTable .rt-th:after {
+    content: '';
+    background-image: url('../img/carrot-down.svg');
+    color: grey;
+    width: 8px;
+    height: 8px;
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: calc(50% - 4px);
+}
+
+.ReactTable .rt-th.no-sort:after {
+    content: '';
+    background-image: url('');
+}
+
+.ReactTable .hide-desktop {
+    text-align: center;
+    margin: auto;
+}
+
+.ReactTable .rt-th.hide-desktop:after {
+    content: '';
+    background-image: none;
+}
+
+.ReactTable.-striped .rt-tr.selected,
+.ReactTable.-striped .rt-tr.-odd.selected {
+    color: white;
+    background: #c10f3a;
+}
+
+.ReactTable .rt-th {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'SJ Sans', sans-serif;
+}
+
+.hide-desktop {
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .hide-tablet {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    .hide-desktop {
+        display: inherit;
+    }
+
+    .column-name {
+        width: 40% !important;
+        margin-left: 2px;
+    }
+
+    .column-bib {
+        width: 15% !important;
+    }
+
+    .app-container .results-container {
+        /* position: absolute; */
+        width: 100%;
+        bottom: 0;
+        height: 90%;
+    }
+
+    .results-table {
+        height: 90%;
+    }
+
+    .app-container .ReactTable {
+        margin-bottom: 0 !important;
+        max-height: inherit;
+        height: 100%;
+    }
+
+    .results-table .table-component {
+        width: 100% !important;
+    }
+
+    .ReactTable .rt-thead {
+        min-width: 0 !important;
+    }
+
+    .ReactTable .rt-tbody {
+        min-width: 0 !important;
+        max-height: 72vh;
+    }
+
+    .header-name{
+       margin-left: 5px; 
+       margin-right: 5px;
+    }
+}
+
+@media(max-height: 400px) {
+    .app-container .results-container {
+        height: 81%;
+        bottom: -5px;
+    }
+}
+
+@media(max-width: 500px) {
+    .app-container .ReactTable {
+        height: 100%;
+    }
+}
+
+@media(max-width: 330px) {
+    .app-container .ReactTable {
+        height: 100%;
+    }
+}
+
+
+/****************************
+  mobile athlete card styles
+*****************************/
+.block-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.mobile-card {
+    margin-left: 5px;
+    margin-bottom: 3em;
+    margin-top: 1em;
+}
+
+.mobile-card h2 {
+    margin-bottom: 0;
+}
+
+.card-block {
+    width: 32%;
+    margin: 1em 0;
+}
+
+.card-block h3 {
+    font-family: 'SJ Sans', sans-serif;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #a9a9a9cf;
+}
+
+.card-block p {
+    margin: 0;
+}
+.half-marathon path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.half-marathon .axis path,
+.half-marathon .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}

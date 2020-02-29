@@ -1,0 +1,24 @@
+{
+  "name": "marathon-api",
+  "version": "1.0.0",
+  "description": "api's for all the marathon's",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"error: no test specified\" && exit 1"
+  },
+  "author": "Trenton Kennedy",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pg": "^7.18.1",
+    "request": "2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

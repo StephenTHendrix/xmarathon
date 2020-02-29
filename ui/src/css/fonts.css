@@ -1,0 +1,50 @@
+/*load fonts*/
+@font-face {
+    font-family: "SJ Sans";
+    src: url(../fonts/sj-sans/sjs-light.eot);
+    src: url(../fonts/sj-sans/sjs-light.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/sj-sans/sjs-light.woff) format("woff"),
+    url(../fonts/sj-sans/sjs-light.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 300
+}
+
+@font-face {
+    font-family: "SJ Sans";
+    src: url(../fonts/sj-sans/sjs-regular.eot);
+    src: url(../fonts/sj-sans/sjs-regular.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/sj-sans/sjs-regular.woff) format("woff"),
+    url(../fonts/sj-sans/sjs-regular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: "SJ Sans";
+    src: url(../fonts/sj-sans/sjs-medium.eot);
+    src: url(../fonts/sj-sans/sjs-medium.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/sj-sans/sjs-medium.woff) format("woff"),
+    url(../fonts/sj-sans/sjs-medium.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 600
+}
+
+@font-face {
+    font-family: "SJ Sans";
+    src: url(../fonts/sj-sans/sjs-book.eot);
+    src: url(../fonts/sj-sans/sjs-book.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/sj-sans/sjs-book.woff) format("woff"),
+    url(../fonts/sj-sans/sjs-book.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 700
+}
+
+@font-face {
+    font-family: "SJ Sans";
+    src: url(../fonts/sj-sans/sjs-bold.eot);
+    src: url(../fonts/sj-sans/sjs-bold.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/sj-sans/sjs-bold.woff) format("woff"),
+    url(../fonts/sj-sans/sjs-bold.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 800
+}
