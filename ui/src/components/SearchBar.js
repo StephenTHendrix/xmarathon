@@ -93,14 +93,13 @@ function SearchBar(props) {
         {value === '' ? (
           ''
         ) : (
-          <div>Icons uninstalled</div>
-          // <Ionicon
-          //   className="close-circle"
-          //   icon="md-close-circle"
-          //   fontSize="26px"
-          //   color="#fff"
-          //   onClick={onClearSearch}
-          // />
+          <Ionicon
+            className="close-circle"
+            icon="md-close-circle"
+            fontSize="26px"
+            color="#fff"
+            onClick={onClearSearch}
+          />
         )}
       </div>
     </div>
